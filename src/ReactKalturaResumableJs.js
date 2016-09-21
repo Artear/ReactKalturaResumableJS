@@ -40,7 +40,7 @@ export default class ReactKalturaResumableJs extends React.Component {
     _uploadVideo = (file, resumable) => {
 
         file.bootstrap();
-        console.log('server', this.props.server);
+
         resumable.opts.target = this.props.server + "/service/uploadToken/action/upload";
         resumable.opts.fileParameterName = "fileData";
 
@@ -49,7 +49,7 @@ export default class ReactKalturaResumableJs extends React.Component {
             "&uploadToken:fileSize=" + file.size;
 
         this._request("/service/uploadToken/action/add", queryString)
-            .then(function (response) {
+            .then((response) => {
 
                 let uploadToken = response.id;
 
@@ -57,8 +57,10 @@ export default class ReactKalturaResumableJs extends React.Component {
                     lastUploadToken: uploadToken
                 });
 
-                resumable.opts.query = function (file, chunk) {
-                    let params = {
+                console.log('lastUploadToken', this.state.lastUploadToken);
+
+                resumable.opts.query = (file, chunk) => {
+                    return {
                         format: 1,
                         ks: this.props.ks,
                         uploadTokenId: uploadToken,
@@ -66,14 +68,11 @@ export default class ReactKalturaResumableJs extends React.Component {
                         resumeAt: chunk.startByte,
                         finalChunk: chunk.offset + 1 == file.chunks.length ? 1 : 0,
                     };
-                    console.log("resumableQuery called", params);
-                    return params;
                 };
 
                 resumable.upload();
 
-
-            }).catch(function (reason) {
+            }).catch((reason) => {
 
         });
     };

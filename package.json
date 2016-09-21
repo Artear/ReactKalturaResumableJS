@@ -5,7 +5,8 @@
   "main": "./build/react-kaltura-resumablejs.js",
   "scripts": {
     "prepublish": "gulp build",
-    "test": "mocha --compilers js:babel-register --ui bdd ./test/kalturaResumableTest.js"
+    "test": "mocha --compilers js:babel-register --ui bdd ./test/kalturaResumableTest.js",
+    "demo": "node $NODE_DEBUG_OPTION ./example/server.js"
   },
   "repository": {
     "type": "git",
@@ -16,29 +17,43 @@
     "resumablejs",
     "react"
   ],
-  "author": "Alejo Román Daraio",
+  "author": "Alejo Román Daraio <alejodaraio@gmail.com> (https://github.com/alejodaraio)",
+  "contributors": [
+    "Gonzalo Rubino <gonzalo_rubino@artear.com> (https://github.com/grubinoartear)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Artear/ReactKalturaResumableJS/issues"
   },
   "homepage": "https://github.com/Artear/ReactKalturaResumableJS#readme",
   "dependencies": {
-    "axios": "^0.14.0",
+    "axios": "0.14.0",
     "react": "15.3.2",
-    "react-dom": "15.3.2"
+    "react-dom": "15.3.2",
+    "react-resumable-js": "^1.0.19"
   },
   "devDependencies": {
-    "gulp": "3.8.11",
-    "gulp-babel": "6.1.2",
-    "gulp-concat": "2.6.0",
     "babel-core": "^6.0.20",
+    "babel-eslint": "^4.1.3",
     "babel-loader": "^6.0.1",
-    "babel-plugin-transform-object-assign": "^6.8.0",
-    "babel-polyfill": "^6.13.0",
+    "babel-plugin-transform-object-assign": "6.8.0",
+    "babel-polyfill": "6.13.0",
     "babel-preset-es2015": "^6.0.15",
     "babel-preset-react": "^6.0.15",
     "babel-preset-stage-0": "^6.0.15",
-    "babel-register": "^6.14.0",
-    "chai": "^3.5.0"
+    "eslint": "^1.10.3",
+    "eslint-plugin-react": "^3.6.2",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.2.0",
+    "react-hot-loader": "^1.3.0",
+    "source-map-loader": "^0.1.5",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "directories": {
+    "example": "example",
+    "test": "test"
   }
 }

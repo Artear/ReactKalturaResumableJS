@@ -1,41 +1,107 @@
 import React from "react";
 import axios from "axios";
+import ReactResumableJs from "react-resumable-js";
 
 export default class ReactKalturaResumableJs extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            lastUploadToken: null
+        };
     }
 
-    _request(server, ks, path, queryString) {
+    _request = (path, queryString) => {
 
-        let url = server + path + "?format=1&ks=" + ks + "&" + queryString;
-        let config = {
-            responseType: 'json'
-        };
+        let url = this.props.server + path + "?format=1&ks=" + this.props.ks + "&" + queryString;
 
         return new Promise(function (fulfill, reject) {
-            axios.post(url, {}, config)
+            axios.post(url)
                 .then(fulfill)
                 .catch(reject);
         });
+    };
 
-    }
+    _addMedia = (files) => {
 
-    _addMedia(server, ks, uploadToken, name) {
-        let self = this;
-        return new Promise(function (fulfill, reject) {
-            let path = "/service/media/action/addFromUploadedFile";
-            let queryString = "mediaEntry:name=" + encodeURIComponent(name) + "&mediaEntry:mediaType=1&uploadTokenId=" + uploadToken;
+        console.log('Add Media', files);
 
-            self._request(server, ks, path, queryString).then(fulfill).catch(reject);
-        })
-    }
+        /*
+         let self = this;
+         return new Promise(function (fulfill, reject) {
+         let path = "/service/media/action/addFromUploadedFile";
+         let queryString = "mediaEntry:name=" + encodeURIComponent(name) + "&mediaEntry:mediaType=1&uploadTokenId=" + uploadToken;
+
+         self._request(path, queryString).then(fulfill).catch(reject);
+         self = null;
+         })*/
+    };
+
+    _uploadVideo = (file, resumable) => {
+
+        file.bootstrap();
+        console.log('server', this.props.server);
+        resumable.opts.target = this.props.server + "/service/uploadToken/action/upload";
+        resumable.opts.fileParameterName = "fileData";
+
+        let queryString = "uploadToken:objectType=KalturaUploadToken" +
+            "&uploadToken:fileName=" + encodeURIComponent(file.fileName) +
+            "&uploadToken:fileSize=" + file.size;
+
+        this._request("/service/uploadToken/action/add", queryString)
+            .then(function (response) {
+
+                let uploadToken = response.id;
+
+                this.setState({
+                    lastUploadToken: uploadToken
+                });
+
+                resumable.opts.query = function (file, chunk) {
+                    let params = {
+                        format: 1,
+                        ks: this.props.ks,
+                        uploadTokenId: uploadToken,
+                        resume: chunk.offset > 0 ? 1 : 0,
+                        resumeAt: chunk.startByte,
+                        finalChunk: chunk.offset + 1 == file.chunks.length ? 1 : 0,
+                    };
+                    console.log("resumableQuery called", params);
+                    return params;
+                };
+
+                resumable.upload();
+
+
+            }).catch(function (reason) {
+
+        });
+    };
 
     render() {
 
+        let options = {
+            'uploaderID': 'video-upload',
+            'filetypes': ["mp4"],
+            'fileAccept': 'video/*',
+            'fileAddedMessage': 'Started!',
+            'completedMessage': 'Complete! : ',
+            'service': null,
+            'textLabel': 'Uploaded files',
+            'previousText': '',
+            'disableDragAndDrop': true,
+            'onFileSuccess': (files) => {
+                this._addMedia(files);
+            },
+            'onFileAdded': (file, resumable) => {
+                this._uploadVideo(file, resumable);
+            },
+            'headerObject': {}
+        };
+
         return (
             <div>
-                Kaltura Resumable
+                <ReactResumableJs options={options}/>
             </div>
         )
     }

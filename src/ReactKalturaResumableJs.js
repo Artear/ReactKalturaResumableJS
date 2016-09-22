@@ -49,7 +49,7 @@ export default class ReactKalturaResumableJs extends React.Component {
 
         resumable.opts.target = this.props.server + "/service/uploadToken/action/upload";
         resumable.opts.fileParameterName = "fileData";
-        resumable.opts.chunkSize = chunksize*1024*1024;
+        resumable.opts.chunkSize = 1*1024*1024;
         resumable.opts.simultaneousUploads = 1;
         resumable.opts.testChunks = false;
         resumable.opts.throttleProgressCallbacks = 1;

@@ -10,16 +10,23 @@ export default class ReactKalturaResumableExample extends React.Component {
         }
     }
 
-    /*
-     http://vodgc.com/api_v3
-     YTgxNWQwODJhYzJiYWFhNDk1YzEwZTViNzFmZjg1ZmMyNDU2YmM3NHwxMDc7MTA3OzE0NzQ0OTM0NTM7MDsxOTUwNTswOw==
-     */
+    onSuccess = (response) => {
+        console.log(response);
+    };
+
+    onError = (error) => {
+        console.log(error);
+    };
+
     renderUploader = () => {
 
         this.setState({
             uploader: <ReactKalturaResumableJs
                 server={document.querySelector('#kalturaUrlServer').value}
                 ks={document.querySelector('#kalturaKS').value}
+                onSuccess={this.onSuccess}
+                onError={this.onError}
+                chunksize={3}
             />
 
         });
@@ -32,7 +39,7 @@ export default class ReactKalturaResumableExample extends React.Component {
             <div>
                 <input value="http://vodgc.com/api_v3" id="kalturaUrlServer" placeholder="Kaltura url server" type="text" />
                 <br/>
-                <input value="ZjZiMmQ4NzliY2U0NjliZTJmZWI4ZGE4Y2IzNTI5ZDNjYWEyN2IyNnwxMDc7MTA3OzE0NzQ1NzUwMjc7MDs3ODQ2OzA7" id="kalturaKS" type="text" placeholder="Kaltura KS" />
+                <input value="ZWFhYjg0NDQ4MmQyZTI3MmU4NTk2OGQ0M2JmYTJmNzE1ZjQ5OTI0YXwxMzA7MTMwOzE0NzQ2NzA1NjA7MDszMDY5NzswOw==" id="kalturaKS" type="text" placeholder="Kaltura KS" />
                 <br/>
                 <button onClick={this.renderUploader}>Render Kaltura Uploader</button>
                 <div id="uploaderContainer">

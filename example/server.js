@@ -2,7 +2,7 @@
 
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const config = require('./webpack.config');
+const config = require('./../webpack.config.js');
 const open = require('open');
 const port = 8888;
 const contentBase = './example/';

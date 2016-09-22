@@ -4,11 +4,12 @@ var webpack = require('webpack');
 module.exports = {
     devtool: 'source-map',
     entry: [
-        path.join(__dirname, '../src/index')
+        path.join(__dirname, '../example/src/index')
     ],
     output: {
-        path: path.join(__dirname, '../build'),
-        filename: 'bundle.js'
+        path: path.join(__dirname, '../example/build'),
+        filename: 'bundle.js',
+        publicPath: 'static'
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin()

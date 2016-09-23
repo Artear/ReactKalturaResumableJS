@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>React Kaltura Resumablejs by Artear</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>React Kaltura Resumablejs</h1>
+        <h2>Uploader with ReactResumableJS to upload file into Kaltura</h2>
+        <a href="https://github.com/Artear/ReactKalturaResumableJS" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="react-kaltura-resumable-js" class="anchor" href="#react-kaltura-resumable-js" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>React Kaltura Resumable JS</h1>
+
+<p>Uploader with <a href="https://www.npmjs.com/package/react-resumable-js">ReactResumableJS</a> to upload file into Kaltura</p>
+
+<p><a href="https://nodei.co/npm/react-kaltura-resumablejs/"><img src="https://nodei.co/npm/react-kaltura-resumablejs.png?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM"></a></p>
+
+<p><a href="https://circleci.com/gh/Artear/ReactKalturaResumableJS"><img src="https://circleci.com/gh/Artear/ReactKalturaResumableJS.svg" alt="CircleCI"></a> <a href="https://circleci.com/gh/Artear/ReactKalturaResumableJS"><img src="https://circleci.com/gh/Artear/ReactKalturaResumableJS.svg?style=shield" alt="CircleCI"></a></p>
+
+<h3>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h3>
+
+<p><code>npm i react-kaltura-resumablejs</code></p>
+
+<h3>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Options</h3>
+
+<ul>
+<li>filetypes: Set the  video extensions to upload. Ex: ['mp4','avi'].</li>
+<li>chunksize: Set in KB the size to upload the file in chunks. Ex: 1024.</li>
+<li>simultaneousUploads: amount of upload at same time. Ex: 1.</li>
+<li>onError: Catch the upload error. Must be a function. Ex: (error) =&gt; { return error; }.</li>
+<li>onSuccess: Catch the file success when finish the upload. Ex: (success) =&gt; { return success}</li>
+<li>uploaderID: Container ID to render the ReactResumableJS. Ex: "video-uploader",</li>
+<li>textLabel: "Uploaded files",</li>
+<li>fileAddedMessage: "Started",</li>
+<li>completedMessage: "Complete!:"</li>
+</ul>
+
+<h3>
+<a id="changelog" class="anchor" href="#changelog" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Changelog</h3>
+
+<ul>
+<li>1.0.1
+
+<ul>
+<li>updated react-resumablejs</li>
+</ul>
+</li>
+</ul>
+
+<h3>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">export</span> <span class="pl-v">default</span> <span class="pl-k">class</span> <span class="pl-en">Example</span> <span class="pl-k">extends</span> <span class="pl-e">React</span>.<span class="pl-smi">Component</span> {
+
+    <span class="pl-en">constructor</span>(<span class="pl-smi">props</span>) {
+        <span class="pl-v">super</span>(props);
+    }
+
+    <span class="pl-en">render</span>() {
+
+        <span class="pl-k">return</span> (
+
+            <span class="pl-k">&lt;</span>div<span class="pl-k">&gt;</span>
+               <span class="pl-k">&lt;</span>ReactKalturaResumableJs
+                   server<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>http://www.kaltura.com/api_v3<span class="pl-pds">"</span></span>
+                   ks<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>0_asdfafdvsdbsdgsdgsdgs<span class="pl-pds">"</span></span>
+                   onSuccess<span class="pl-k">=</span>{(<span class="pl-smi">success</span>) <span class="pl-k">=&gt;</span> { <span class="pl-en">console</span>.<span class="pl-c1">log</span>(success); }}
+                   onError<span class="pl-k">=</span>{(<span class="pl-smi">error</span>) <span class="pl-k">=&gt;</span> { <span class="pl-en">console</span>.<span class="pl-c1">log</span>(error); }}
+               <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+            <span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
+
+        );
+    }
+}</pre></div>
+
+<h3>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo</h3>
+
+<p><code>npm run demo</code></p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/Artear/ReactKalturaResumableJS/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/Artear/ReactKalturaResumableJS/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/Artear/ReactKalturaResumableJS"></a> is maintained by <a href="https://github.com/Artear">Artear</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>

@@ -36,9 +36,9 @@ export default class ReactKalturaResumableExample extends React.Component {
         return (
 
             <div>
-                <input className="form-control" value="http://vodgc.com/api_v3" id="kalturaUrlServer" placeholder="Kaltura url server" type="text" />
+                <input className="form-control" id="kalturaUrlServer" placeholder="Kaltura url server" type="text" />
                 <br/>
-                <input className="form-control" value="OThmMzBhNGI5NmU2NWQ5NjI0ODFiYTlkMWViY2Q0OTQwMzhmNmY4ZHwxMzA7MTMwOzE0NzQ3MjIzOTI7MDsxMjcyOTswOw==" id="kalturaKS" type="text" placeholder="Kaltura KS" />
+                <input className="form-control" id="kalturaKS" type="text" placeholder="Kaltura KS" />
                 <br/>
                 <button className="myButton" onClick={this.renderUploader}>Render Kaltura Uploader</button>
                 <div id="uploaderContainer">

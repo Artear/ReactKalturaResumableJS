@@ -2,6 +2,8 @@
 
 Uploader with [ReactResumableJS](https://www.npmjs.com/package/react-resumable-js) to upload file into Kaltura
 
+[![NPM](https://nodei.co/npm/react-kaltura-resumablejs.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/react-kaltura-resumablejs/)
+
 [![CircleCI](https://circleci.com/gh/Artear/ReactKalturaResumableJS.svg)](https://circleci.com/gh/Artear/ReactKalturaResumableJS) [![CircleCI](https://circleci.com/gh/Artear/ReactKalturaResumableJS.svg?style=shield)](https://circleci.com/gh/Artear/ReactKalturaResumableJS)
 
 ### Install
@@ -18,6 +20,10 @@ Uploader with [ReactResumableJS](https://www.npmjs.com/package/react-resumable-j
 - textLabel: "Uploaded files",
 - fileAddedMessage: "Started",
 - completedMessage: "Complete!:"
+
+### Changelog
+- 1.0.1
+    - updated react-resumablejs
 
 ### Example
 

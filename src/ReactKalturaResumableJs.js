@@ -89,9 +89,10 @@ export default class ReactKalturaResumableJs extends React.Component {
             <div>
                 <ReactResumableJs
                     uploaderID={this.props.uploaderID}
+                    dropTargetID="kalturaDropTarget"
                     filetypes={this.props.filetypes}
                     fileAccept="video/*"
-                    fileAddedMessage={this.props.fileAddedMessage}
+                    fileAddedM|essage={this.props.fileAddedMessage}
                     completedMessage={this.props.completedMessage}
                     service={null}
                     textLabel={this.props.textLabel}

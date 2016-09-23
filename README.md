@@ -2,6 +2,8 @@
 
 Uploader with [ReactResumableJS](https://www.npmjs.com/package/react-resumable-js) to upload file into Kaltura
 
+[![CircleCI](https://circleci.com/gh/Artear/ReactKalturaResumableJS.svg)](https://circleci.com/gh/Artear/ReactKalturaResumableJS) [![CircleCI](https://circleci.com/gh/Artear/ReactKalturaResumableJS.svg?style=shield)](https://circleci.com/gh/Artear/ReactKalturaResumableJS)
+
 ### Install
 `npm i react-kaltura-resumablejs`
 

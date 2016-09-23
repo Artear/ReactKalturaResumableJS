@@ -26,7 +26,6 @@ export default class ReactKalturaResumableExample extends React.Component {
                 ks={document.querySelector('#kalturaKS').value}
                 onSuccess={this.onSuccess}
                 onError={this.onError}
-                chunksize={3}
             />
 
         });
@@ -39,7 +38,7 @@ export default class ReactKalturaResumableExample extends React.Component {
             <div>
                 <input value="http://vodgc.com/api_v3" id="kalturaUrlServer" placeholder="Kaltura url server" type="text" />
                 <br/>
-                <input value="MjgwZmUxODNiZmVmMmMxYzU2MWUxYmQxYTNlYmRhOGYxMWJmNTkzMHwxMzA7MTMwOzE0NzQ2NzE1Mjk7MDsyOTExNjswOw==" id="kalturaKS" type="text" placeholder="Kaltura KS" />
+                <input value="OThmMzBhNGI5NmU2NWQ5NjI0ODFiYTlkMWViY2Q0OTQwMzhmNmY4ZHwxMzA7MTMwOzE0NzQ3MjIzOTI7MDsxMjcyOTswOw==" id="kalturaKS" type="text" placeholder="Kaltura KS" />
                 <br/>
                 <button onClick={this.renderUploader}>Render Kaltura Uploader</button>
                 <div id="uploaderContainer">

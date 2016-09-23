@@ -2,6 +2,10 @@ import React from "react";
 import axios from "axios";
 import ReactResumableJs from "react-resumable-js";
 
+const KALTURA_ADD = "/service/uploadToken/action/add";
+const KALTURA_UPLOAD = "/service/uploadToken/action/upload";
+const KALTURA_ADD_FROM_UPLOADED_FILE = "/service/media/action/addFromUploadedFile";
+
 export default class ReactKalturaResumableJs extends React.Component {
     constructor(props) {
         super(props);
@@ -24,20 +28,16 @@ export default class ReactKalturaResumableJs extends React.Component {
 
     _addMedia = (file, message) => {
 
-        console.log('Add Media', file, message);
-
-        return new Promise((fulfill, reject) => {
-            let path = "/service/media/action/addFromUploadedFile";
-            let queryString = "mediaEntry:name=" + encodeURIComponent(file.uniqueIdentifier) + "&mediaEntry:mediaType=1&uploadTokenId=" + this.state.lastUploadToken;
-            this._request(path, queryString).then((response) => {
-                if(typeof this.props.onSuccess === "function") {
-                    this.props.onSuccess(response.data);
-                }
-            }).catch((reject) => {
-                if(typeof this.props.onError === "function") {
-                    this.props.onError(reject);
-                }
-            });
+        let path = KALTURA_ADD_FROM_UPLOADED_FILE;
+        let queryString = "mediaEntry:name=" + encodeURIComponent(file.uniqueIdentifier) + "&mediaEntry:mediaType=1&uploadTokenId=" + this.state.lastUploadToken;
+        this._request(path, queryString).then((response) => {
+            if (typeof this.props.onSuccess === "function") {
+                this.props.onSuccess(response.data);
+            }
+        }).catch((reject) => {
+            if (typeof this.props.onError === "function") {
+                this.props.onError(reject);
+            }
         });
     };
 
@@ -47,10 +47,10 @@ export default class ReactKalturaResumableJs extends React.Component {
 
         let chunksize = this.props.chunksize;
 
-        resumable.opts.target = this.props.server + "/service/uploadToken/action/upload";
+        resumable.opts.target = this.props.server + KALTURA_UPLOAD;
         resumable.opts.fileParameterName = "fileData";
-        resumable.opts.chunkSize = 1*1024*1024;
-        resumable.opts.simultaneousUploads = 1;
+        resumable.opts.chunkSize = chunksize * 1024;
+        resumable.opts.simultaneousUploads = this.props.simultaneousUploads;
         resumable.opts.testChunks = false;
         resumable.opts.throttleProgressCallbacks = 1;
 
@@ -58,14 +58,12 @@ export default class ReactKalturaResumableJs extends React.Component {
             "&uploadToken:fileName=" + encodeURIComponent(file.fileName) +
             "&uploadToken:fileSize=" + file.size;
 
-        this._request("/service/uploadToken/action/add", queryString)
+        this._request(KALTURA_ADD, queryString)
             .then((response) => {
 
                 this.setState({
                     lastUploadToken: response.data.id
                 });
-
-                console.log('lastUploadToken', this.state.lastUploadToken);
 
                 resumable.opts.query = (file, chunk) => {
                     return {
@@ -80,8 +78,8 @@ export default class ReactKalturaResumableJs extends React.Component {
 
                 resumable.upload();
 
-            }).catch((reason) => {
-
+            }).catch((reject) => {
+            this.props.onError(reject);
         });
     };
 
@@ -90,13 +88,13 @@ export default class ReactKalturaResumableJs extends React.Component {
         return (
             <div>
                 <ReactResumableJs
-                    uploaderID="video-uploader"
-                    filetypes={["mp4"]}
+                    uploaderID={this.props.uploaderID}
+                    filetypes={this.props.filetypes}
                     fileAccept="video/*"
-                    fileAddedMessage="Started"
-                    completedMessage="Complete!: "
+                    fileAddedMessage={this.props.fileAddedMessage}
+                    completedMessage={this.props.completedMessage}
                     service={null}
-                    textLabel="Uploaded files"
+                    textLabel={this.props.textLabel}
                     disableDragAndDrop={true}
                     onFileSuccess={(file, message) => {
                         this._addMedia(file, message);
@@ -111,10 +109,25 @@ export default class ReactKalturaResumableJs extends React.Component {
 }
 
 ReactKalturaResumableJs.propTypes = {
-    chunksize: React.PropTypes.number
+    filetypes: React.PropTypes.array,
+    chunksize: React.PropTypes.number,
+    simultaneousUploads: React.PropTypes.number,
+    onError: React.PropTypes.func,
+    onSuccess: React.PropTypes.func,
+    uploaderID: React.PropTypes.string.isRequired,
+    textLabel: React.PropTypes.string,
+    fileAddedMessage: React.PropTypes.string,
+    completedMessage: React.PropTypes.string
 };
 
-
 ReactKalturaResumableJs.defaultProps = {
-    chunksize: 1
+    filetypes: ['mp4'],
+    chunksize: 1024,
+    simultaneousUploads: 1,
+    onError: (error) => { return error; },
+    onSuccess: (success) => { return success},
+    uploaderID: "video-uploader",
+    textLabel: "Uploaded files",
+    fileAddedMessage: "Started",
+    completedMessage: "Complete!:"
 };

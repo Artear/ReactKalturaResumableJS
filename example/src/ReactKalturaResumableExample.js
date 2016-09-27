@@ -10,8 +10,12 @@ export default class ReactKalturaResumableExample extends React.Component {
         }
     }
 
-    onSuccess = (response) => {
+    onFileSuccess = (response) => {
         console.log(response);
+    };
+
+    onFileRemoved = (file) => {
+      console.log(file);
     };
 
     onError = (error) => {
@@ -24,7 +28,8 @@ export default class ReactKalturaResumableExample extends React.Component {
             uploader: <ReactKalturaResumableJs
                 server={document.querySelector('#kalturaUrlServer').value}
                 ks={document.querySelector('#kalturaKS').value}
-                onSuccess={this.onSuccess}
+                onFileSuccess={this.onFileSuccess}
+                onFileRemoved={this.onFileRemoved}
                 onError={this.onError}
             />
 

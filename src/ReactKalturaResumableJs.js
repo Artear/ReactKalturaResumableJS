@@ -31,8 +31,8 @@ export default class ReactKalturaResumableJs extends React.Component {
         let path = KALTURA_ADD_FROM_UPLOADED_FILE;
         let queryString = "mediaEntry:name=" + encodeURIComponent(file.uniqueIdentifier) + "&mediaEntry:mediaType=1&uploadTokenId=" + this.state.lastUploadToken;
         this._request(path, queryString).then((response) => {
-            if (typeof this.props.onSuccess === "function") {
-                this.props.onSuccess(response.data);
+            if (typeof this.props.onFileSuccess === "function") {
+                this.props.onFileSuccess(response.data);
             }
         }).catch((reject) => {
             if (typeof this.props.onError === "function") {
@@ -97,12 +97,9 @@ export default class ReactKalturaResumableJs extends React.Component {
                     service={null}
                     textLabel={this.props.textLabel}
                     disableDragAndDrop={true}
-                    onFileSuccess={(file, message) => {
-                        this._addMedia(file, message);
-                    }}
-                    onFileAdded={(file, resumable) => {
-                        this._uploadVideo(file, resumable);
-                    }}
+                    onFileSuccess={this._addMedia}
+                    onFileAdded={this._uploadVideo}
+                    onFileRemoved={this.props.onFileRemoved}
                 />
             </div>
         )
@@ -110,12 +107,13 @@ export default class ReactKalturaResumableJs extends React.Component {
 }
 
 ReactKalturaResumableJs.propTypes = {
+    uploaderID: React.PropTypes.string.isRequired,
     filetypes: React.PropTypes.array,
     chunksize: React.PropTypes.number,
     simultaneousUploads: React.PropTypes.number,
     onError: React.PropTypes.func,
     onSuccess: React.PropTypes.func,
-    uploaderID: React.PropTypes.string.isRequired,
+    onFileRemoved: React.PropTypes.func,
     textLabel: React.PropTypes.string,
     fileAddedMessage: React.PropTypes.string,
     completedMessage: React.PropTypes.string
@@ -126,7 +124,8 @@ ReactKalturaResumableJs.defaultProps = {
     chunksize: 1024,
     simultaneousUploads: 1,
     onError: (error) => { return error; },
-    onSuccess: (success) => { return success},
+    onFileSuccess: (success) => { return success;},
+    onFileRemoved: (file) => { return file; },
     uploaderID: "video-uploader",
     textLabel: "Uploaded files",
     fileAddedMessage: "Started",

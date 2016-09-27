@@ -9,21 +9,23 @@ Uploader with [ReactResumableJS](https://www.npmjs.com/package/react-resumable-j
 ### Install
 `npm i react-kaltura-resumablejs`
 
+### Node Version
+- LTS
+
 ### Options
 
+- uploaderID: Container ID to render the ReactResumableJS. Ex: "video-uploader",
 - filetypes: Set the  video extensions to upload. Ex: ['mp4','avi'].
 - chunksize: Set in KB the size to upload the file in chunks. Ex: 1024.
 - simultaneousUploads: amount of upload at same time. Ex: 1.
 - onError: Catch the upload error. Must be a function. Ex: (error) => { return error; }.
 - onSuccess: Catch the file success when finish the upload. Ex: (success) => { return success}
-- uploaderID: Container ID to render the ReactResumableJS. Ex: "video-uploader",
 - textLabel: "Uploaded files",
 - fileAddedMessage: "Started",
 - completedMessage: "Complete!:"
 
-### Changelog
-- 1.0.1
-    - updated react-resumablejs
+### Changelogs
+[Changelogs](changelog.md)
 
 ### Example
 
@@ -42,7 +44,8 @@ export default class Example extends React.Component {
                <ReactKalturaResumableJs
                    server="http://www.kaltura.com/api_v3"
                    ks="0_asdfafdvsdbsdgsdgsdgs"
-                   onSuccess={(success) => { console.log(success); }}
+                   onFileSuccess={(success) => { console.log(success); }}
+                   onFileRemoved={(file) => { console.log(file); }}
                    onError={(error) => { console.log(error); }}
                />
             </div>

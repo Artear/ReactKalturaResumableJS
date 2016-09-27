@@ -44,6 +44,7 @@ export default class Example extends React.Component {
                <ReactKalturaResumableJs
                    server="http://www.kaltura.com/api_v3"
                    ks="0_asdfafdvsdbsdgsdgsdgs"
+                   uploaderID="myKalturaUploader"
                    onFileSuccess={(success) => { console.log(success); }}
                    onFileRemoved={(file) => { console.log(file); }}
                    onError={(error) => { console.log(error); }}

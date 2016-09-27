@@ -28,6 +28,7 @@ export default class ReactKalturaResumableExample extends React.Component {
             uploader: <ReactKalturaResumableJs
                 server={document.querySelector('#kalturaUrlServer').value}
                 ks={document.querySelector('#kalturaKS').value}
+                uploaderID="myKalturaUploader"
                 onFileSuccess={this.onFileSuccess}
                 onFileRemoved={this.onFileRemoved}
                 onError={this.onError}

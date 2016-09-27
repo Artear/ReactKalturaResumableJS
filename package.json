@@ -4,7 +4,7 @@
   "description": "Uploader with ResumableJS to upload file into Kaltura",
   "main": "./build/react-kaltura-resumablejs.js",
   "scripts": {
-    "prepublish": "C",
+    "prepublish": "gulp build",
     "test": "mocha --compilers js:babel-register --ui bdd ./test/kalturaResumableTest.js",
     "demo": "npm run build-demo && node $NODE_DEBUG_OPTION ./example/server.js",
     "build-demo": "gulp build && webpack"

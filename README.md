@@ -48,6 +48,7 @@ export default class Example extends React.Component {
                    onFileSuccess={(success) => { console.log(success); }}
                    onFileRemoved={(file) => { console.log(file); }}
                    onError={(error) => { console.log(error); }}
+                   maxFileSize={104857600}
                />
             </div>
 

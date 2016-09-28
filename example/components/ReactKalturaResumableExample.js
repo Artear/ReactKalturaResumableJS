@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import ReactKalturaResumableJs from "../../src/ReactKalturaResumableJs";
 
 export default class ReactKalturaResumableExample extends React.Component {
@@ -32,6 +32,7 @@ export default class ReactKalturaResumableExample extends React.Component {
                 onFileSuccess={this.onFileSuccess}
                 onFileRemoved={this.onFileRemoved}
                 onError={this.onError}
+                maxFileSize={104857600}
             />
 
         });

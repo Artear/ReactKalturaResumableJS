@@ -1,4 +1,7 @@
 ### Changelog
+- 1.0.6
+    - fixed demo
+    - added maxFileSize options ( in bytes )
 - 1.0.5
     - updated react resumablejs
 - 1.0.4

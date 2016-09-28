@@ -100,6 +100,7 @@ export default class ReactKalturaResumableJs extends React.Component {
                     onFileSuccess={this._addMedia}
                     onFileAdded={this._uploadVideo}
                     onFileRemoved={this.props.onFileRemoved}
+                    maxFileSize={this.props.maxFileSize}
                 />
             </div>
         )
@@ -116,12 +117,14 @@ ReactKalturaResumableJs.propTypes = {
     onFileRemoved: React.PropTypes.func,
     textLabel: React.PropTypes.string,
     fileAddedMessage: React.PropTypes.string,
-    completedMessage: React.PropTypes.string
+    completedMessage: React.PropTypes.string,
+    maxFileSize: React.PropTypes.number
 };
 
 ReactKalturaResumableJs.defaultProps = {
     filetypes: ['mp4'],
     chunksize: 1024,
+    maxFileSize: 104857600,
     simultaneousUploads: 1,
     onError: (error) => { return error; },
     onFileSuccess: (success) => { return success;},

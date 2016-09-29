@@ -14,6 +14,8 @@ Uploader with [ReactResumableJS](https://www.npmjs.com/package/react-resumable-j
 
 ### Options
 
+- server: http path to upload the file. Ex: http://kaltura.com/api_v3
+- ks: Kaltura secret key from Kaltura.
 - uploaderID: Container ID to render the ReactResumableJS. Ex: "video-uploader",
 - filetypes: Set the  video extensions to upload. Ex: ['mp4','avi'].
 - chunksize: Set in KB the size to upload the file in chunks. Ex: 1024.
@@ -23,6 +25,8 @@ Uploader with [ReactResumableJS](https://www.npmjs.com/package/react-resumable-j
 - textLabel: "Uploaded files",
 - fileAddedMessage: "Started",
 - completedMessage: "Complete!:"
+- disableInput Boolean to disable or enable input file. Send true to disable, false otherwise.
+- maxFileSize The allowed file size for upload. Is expressed in bytes. Default is: 104857600 (100mb).
 
 ### Changelogs
 [Changelogs](changelog.md)

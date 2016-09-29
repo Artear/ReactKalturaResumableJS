@@ -101,6 +101,7 @@ export default class ReactKalturaResumableJs extends React.Component {
                     onFileAdded={this._uploadVideo}
                     onFileRemoved={this.props.onFileRemoved}
                     maxFileSize={this.props.maxFileSize}
+                    disableInput={this.props.disableInput}
                 />
             </div>
         )
@@ -118,7 +119,8 @@ ReactKalturaResumableJs.propTypes = {
     textLabel: React.PropTypes.string,
     fileAddedMessage: React.PropTypes.string,
     completedMessage: React.PropTypes.string,
-    maxFileSize: React.PropTypes.number
+    maxFileSize: React.PropTypes.number,
+    disableInput: React.PropTypes.bool
 };
 
 ReactKalturaResumableJs.defaultProps = {
@@ -132,5 +134,6 @@ ReactKalturaResumableJs.defaultProps = {
     uploaderID: "video-uploader",
     textLabel: "Uploaded files",
     fileAddedMessage: "Started",
-    completedMessage: "Complete!:"
+    completedMessage: "Complete!:",
+    disableInput: false
 };

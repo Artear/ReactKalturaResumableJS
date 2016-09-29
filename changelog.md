@@ -1,13 +1,17 @@
 ### Changelog
+- 1.0.7
+    - updated Demo, now can login with Kaltura user/pass to get the KS.
+    - updated react-resumablejs module.
+    - added disableInput option to enable or disable the input file.
 - 1.0.6
-    - fixed demo
-    - added maxFileSize options ( in bytes )
+    - fixed demo.
+    - added maxFileSize options ( in bytes ).
 - 1.0.5
-    - updated react resumablejs
+    - updated react resumablejs.
 - 1.0.4
-    - added module open as dev dependencies
-    - added option onFileRemoved
-    - changed onSuccess to onFileSuccess
-    - updated example
+    - added module open as dev dependencies.
+    - added option onFileRemoved.
+    - changed onSuccess to onFileSuccess.
+    - updated example.
 - 1.0.1
-    - updated react-resumablejs
+    - updated react-resumablejs.

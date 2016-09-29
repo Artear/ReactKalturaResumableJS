@@ -1,6 +1,6 @@
 {
   "name": "react-kaltura-resumablejs",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Uploader with ResumableJS to upload file into Kaltura",
   "main": "./build/react-kaltura-resumablejs.js",
   "scripts": {
@@ -39,7 +39,7 @@
     "axios": "0.14.0",
     "react": "15.3.2",
     "react-dom": "15.3.2",
-    "react-resumable-js": "1.1.12"
+    "react-resumable-js": "1.1.13"
   },
   "devDependencies": {
     "babel-core": "6.0.20",

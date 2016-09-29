@@ -1,4 +1,6 @@
 ### Changelog
+- 1.0.8
+    - updated react-resumablejs module.
 - 1.0.7
     - updated Demo, now can login with Kaltura user/pass to get the KS.
     - updated react-resumablejs module.

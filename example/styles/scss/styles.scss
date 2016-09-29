@@ -19,7 +19,8 @@
 .resumable-list {overflow:auto; margin-right:-20px;}
 
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   display: block;
   margin: 0;
   width: 100%;
@@ -29,7 +30,8 @@ input[type="text"] {
   box-shadow: none;
   border-radius: none;
 }
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="password"]:focus {
   outline: none;
 }
 
@@ -57,6 +59,7 @@ input[type="text"]:focus {
   padding:6px 24px;
   text-decoration:none;
   text-shadow:0px 1px 0px #154682;
+  margin-bottom: 10px;
 }
 .myButton:hover {
   background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0061a7), color-stop(1, #007dc1));
@@ -92,5 +95,10 @@ li:last-child {
 li a {
   text-decoration: none;
   color: #000;
+}
+
+label.description {
+  margin: 5px;
+  color: grey;
   display: block;
 }

@@ -1,6 +1,6 @@
 {
   "name": "react-kaltura-resumablejs",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Uploader with ResumableJS to upload file into Kaltura",
   "main": "./build/react-kaltura-resumablejs.js",
   "scripts": {
@@ -87,5 +87,8 @@
       "name": "whattafack",
       "email": "whattafack@gmail.com"
     }
-  ]
+  ],
+  "engines": {
+    "node": "4.6.x"
+  }
 }

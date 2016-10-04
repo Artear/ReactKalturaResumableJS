@@ -4,6 +4,7 @@ import ReactKalturaResumableJs from "../../src/ReactKalturaResumableJs";
 
 
 const KALTURA_LOGIN = '/service/user/action/loginByLoginId';
+const KALTURA_CATEGORY_LIST = '/service/categoryentry/action/list';
 
 export default class ReactKalturaResumableExample extends React.Component {
     constructor(props) {
@@ -45,6 +46,8 @@ export default class ReactKalturaResumableExample extends React.Component {
                             alert(result.message);
                         } else {
                             document.querySelector('#kalturaKS').value = result;
+
+                            this.getCategories(result);
                         }
                     }
                 })
@@ -52,6 +55,39 @@ export default class ReactKalturaResumableExample extends React.Component {
                     alert(reason.message);
                 });
         }
+    };
+
+    getCategories = (ks) => {
+
+        let queryString = '?format=1&ks=' + ks;
+        let kalturaUrlServer = document.querySelector('#kalturaUrlServer').value;
+        let url = kalturaUrlServer + KALTURA_CATEGORY_LIST + queryString;
+
+        axios.get(url)
+            .then((response) => {
+                if(response.status === 200) {
+                    let result = response.data;
+                    if (result && result.code && result.message) {
+                        alert(result.message);
+                    } else {
+
+                        document.querySelector('#categories').innerHTML = "";
+
+                        for (var i = 0; i < result.objects.length; i++) {
+                            let item = result.objects[i];
+                            let option = document.createElement("option");
+                            option.text = item.categoryId;
+                            option.value = item.categoryId;
+                            document.querySelector('#categories').appendChild(option);
+                        }
+
+
+                    }
+                }
+            })
+            .catch((reason) => {
+                alert(reason.message);
+            });
     };
 
     renderUploader = () => {
@@ -68,6 +104,7 @@ export default class ReactKalturaResumableExample extends React.Component {
                     onFileRemoved={this.onFileRemoved}
                     onError={this.onError}
                     maxFileSize={104857600}
+                    categories={document.querySelector('#categories option:checked').value}
                 />
             });
         } else {
@@ -90,6 +127,10 @@ export default class ReactKalturaResumableExample extends React.Component {
                 <br/>
                 <button onClick={this.login} className="myButton">Login with Kaltura</button>
                 <input className="form-control" id="kalturaKS" type="text" placeholder="Kaltura KS"/>
+                <br/>
+                <select className="form-control" id="categories">
+                    <option value="">select category</option>
+                </select>
                 <br/>
                 <button className="myButton" onClick={this.renderUploader}>Render Kaltura Uploader</button>
                 <div id="uploaderContainer">

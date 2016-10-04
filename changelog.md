@@ -1,4 +1,7 @@
 ### Changelog
+- 1.0.9
+    - added option categories. Now you can set Categories ID from Kaltura.
+    - updated example.
 - 1.0.8
     - updated react-resumablejs module.
 - 1.0.7

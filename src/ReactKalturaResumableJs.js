@@ -30,6 +30,11 @@ export default class ReactKalturaResumableJs extends React.Component {
 
         let path = KALTURA_ADD_FROM_UPLOADED_FILE;
         let queryString = "mediaEntry:name=" + encodeURIComponent(file.uniqueIdentifier) + "&mediaEntry:mediaType=1&uploadTokenId=" + this.state.lastUploadToken;
+
+        if(this.props.categories.length > 0) {
+            queryString+= '&mediaEntry:categoriesIds=' + this.props.categories;
+        }
+
         this._request(path, queryString).then((response) => {
             if (typeof this.props.onFileSuccess === "function") {
                 this.props.onFileSuccess(response.data);
@@ -120,7 +125,8 @@ ReactKalturaResumableJs.propTypes = {
     fileAddedMessage: React.PropTypes.string,
     completedMessage: React.PropTypes.string,
     maxFileSize: React.PropTypes.number,
-    disableInput: React.PropTypes.bool
+    disableInput: React.PropTypes.bool,
+    categories: React.PropTypes.string
 };
 
 ReactKalturaResumableJs.defaultProps = {
@@ -135,5 +141,6 @@ ReactKalturaResumableJs.defaultProps = {
     textLabel: "Uploaded files",
     fileAddedMessage: "Started",
     completedMessage: "Complete!:",
-    disableInput: false
+    disableInput: false,
+    categories: ""
 };

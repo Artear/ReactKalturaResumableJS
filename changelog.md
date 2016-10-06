@@ -1,4 +1,6 @@
 ### Changelog
+- 1.0.10
+    - added option maxFiles
 - 1.0.9
     - added option categories. Now you can set Categories ID from Kaltura.
     - updated example.

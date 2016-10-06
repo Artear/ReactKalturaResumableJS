@@ -27,6 +27,7 @@ Uploader with [ReactResumableJS](https://www.npmjs.com/package/react-resumable-j
 - completedMessage: "Complete!:"
 - disableInput Boolean to disable or enable input file. Send true to disable, false otherwise.
 - maxFileSize The allowed file size for upload. Is expressed in bytes. Default is: 104857600 (100mb).
+- maxFiles Indicates how many files can be uploaded in a single session. Valid values are any positive integer and undefined for no limit. (Default: undefined)
 
 ### Changelogs
 [Changelogs](changelog.md)
@@ -54,6 +55,7 @@ export default class Example extends React.Component {
                    onError={(error) => { console.log(error); }}
                    maxFileSize={104857600}
                    categories="14,15,16"
+                   maxFiles={3}
                />
             </div>
 

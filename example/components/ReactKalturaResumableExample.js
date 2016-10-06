@@ -105,6 +105,7 @@ export default class ReactKalturaResumableExample extends React.Component {
                     onError={this.onError}
                     maxFileSize={104857600}
                     categories={document.querySelector('#categories option:checked').value}
+                    maxFiles={1}
                 />
             });
         } else {

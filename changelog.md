@@ -1,4 +1,6 @@
 ### Changelog
+- 1.0.11
+    - updated react-resumablejs
 - 1.0.10
     - added option maxFiles
 - 1.0.9

@@ -1,4 +1,9 @@
 ### Changelog
+- 1.0.12
+    - added new options
+        - onMaxFileSizeErrorCallback
+        - maxFilesErrorCallback
+    - updated react-resumablejs
 - 1.0.11
     - updated react-resumablejs
 - 1.0.10

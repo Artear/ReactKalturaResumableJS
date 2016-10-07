@@ -108,6 +108,8 @@ export default class ReactKalturaResumableJs extends React.Component {
                     maxFileSize={this.props.maxFileSize}
                     disableInput={this.props.disableInput}
                     maxFiles={this.props.maxFiles}
+                    onMaxFileSizeErrorCallback={this.props.onMaxFileSizeErrorCallback}
+                    maxFilesErrorCallback={this.props.maxFilesErrorCallback}
                 />
             </div>
         )
@@ -144,5 +146,6 @@ ReactKalturaResumableJs.defaultProps = {
     completedMessage: "Complete!:",
     disableInput: false,
     categories: "",
-    maxFiles: 20
+    maxFiles: 20,
+    onMaxFileSizeErrorCallback: null
 };

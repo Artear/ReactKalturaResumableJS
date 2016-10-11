@@ -39,7 +39,7 @@
     "axios": "0.14.0",
     "react": "15.3.2",
     "react-dom": "15.3.2",
-    "react-resumable-js": "1.1.16"
+    "react-resumable-js": "1.1.17"
   },
   "devDependencies": {
     "babel-core": "6.0.20",

@@ -106,6 +106,7 @@ export default class ReactKalturaResumableExample extends React.Component {
                     maxFileSize={104857600}
                     categories={document.querySelector('#categories option:checked').value}
                     maxFiles={1}
+                    fileAccept="video/*"
                     onMaxFileSizeErrorCallback={function (files) {
                         alert("max size: 104857600");
                     }}

@@ -96,7 +96,7 @@ export default class ReactKalturaResumableJs extends React.Component {
                     uploaderID={this.props.uploaderID}
                     dropTargetID="kalturaDropTarget"
                     filetypes={this.props.filetypes}
-                    fileAccept="video/*"
+                    fileAccept={this.props.fileAccept}
                     fileAddedMessage={this.props.fileAddedMessage}
                     completedMessage={this.props.completedMessage}
                     service={null}
@@ -119,6 +119,7 @@ export default class ReactKalturaResumableJs extends React.Component {
 ReactKalturaResumableJs.propTypes = {
     uploaderID: React.PropTypes.string.isRequired,
     filetypes: React.PropTypes.array,
+    fileAccept: React.PropTypes.string,
     chunksize: React.PropTypes.number,
     simultaneousUploads: React.PropTypes.number,
     onError: React.PropTypes.func,
@@ -134,6 +135,7 @@ ReactKalturaResumableJs.propTypes = {
 
 ReactKalturaResumableJs.defaultProps = {
     filetypes: ['mp4'],
+    fileAccept: "video/mp4,video/x-m4v,video/*,video/x-quicktime",
     chunksize: 1024,
     maxFileSize: 104857600,
     simultaneousUploads: 1,

@@ -30,7 +30,7 @@ Uploader with [ReactResumableJS](https://www.npmjs.com/package/react-resumable-j
 - maxFiles Indicates how many files can be uploaded in a single session. Valid values are any positive integer and undefined for no limit. (Default: undefined)
 - onMaxFileSizeErrorCallback Usefull to use with the above param, and take the exception for use as you want.
 - maxFilesErrorCallback A function which displays the please upload n file(s) at a time message. (Default: displays an alert box with the message Please n one file(s) at a time.)
-
+- fileAccept Set the file accept.
 ### Changelogs
 [Changelogs](changelog.md)
 

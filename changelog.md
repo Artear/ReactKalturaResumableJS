@@ -1,4 +1,7 @@
 ### Changelog
+- 1.0.14
+    - changed default fileAccept
+    - added option fileAccept
 - 1.0.12
     - added new options
         - onMaxFileSizeErrorCallback
